@@ -5,6 +5,346 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".DetalleLibros">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="414dp"
+        android:layout_height="250dp"
+        android:background="@drawable/fondo_title"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="355dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="23dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Información del libro"
+            android:textAlignment="viewStart"
+            android:textColor="#FFFFFF"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintVertical_bias="0.283" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="158dp"
+            android:layout_height="125dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="120dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.117"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/logo_new" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="159dp"
+            android:layout_height="97dp"
+            android:fontFamily="@font/adlam_display"
+            android:text="Librería La Ceiba"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textView3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.595"
+            app:layout_constraintStart_toEndOf="@+id/imageView3"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="411dp"
+        android:layout_height="521dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="3dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5"
+        app:layout_constraintVertical_bias="0.318">
+
+        <TextView
+            android:id="@+id/txtAñoPublicacionLibroDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="116dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="117dp"
+            android:fontFamily="@font/farro"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtISBMDetail"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtTituloLibroDetail" />
+
+        <TextView
+            android:id="@+id/txtAutorLibroDetail"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:fontFamily="@font/farro"
+            android:inputType="textMultiLine"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtAutorLibroStand"
+            app:layout_constraintEnd_toEndOf="@+id/txtEstadoLibroDetail"
+            app:layout_constraintStart_toStartOf="@+id/txtEstadoLibroDetail" />
+
+        <TextView
+            android:id="@+id/txtUUIDLibroDetail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/farro"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtUUIDLibroStand"
+            app:layout_constraintEnd_toEndOf="@+id/txtTituloLibroDetail"
+            app:layout_constraintStart_toStartOf="@+id/txtTituloLibroDetail"
+            app:layout_constraintTop_toTopOf="@+id/txtUUIDLibroStand" />
+
+        <TextView
+            android:id="@+id/txtUUIDLibroStand"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="23dp"
+            android:fontFamily="@font/farro"
+            android:text="ID:"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/txtTituloLibroStand"
+            app:layout_constraintEnd_toStartOf="@+id/txtUUIDLibroDetail"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTituloLibroStand"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="69dp"
+            android:fontFamily="@font/farro"
+            android:text="Título:"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtUUIDLibroStand"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtAutorLibroStand"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="25dp"
+            android:layout_marginBottom="56dp"
+            android:fontFamily="@font/farro"
+            android:text="Autor:"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtAñoPublicacionStand"
+            app:layout_constraintEnd_toStartOf="@+id/txtAutorLibroDetail"
+            app:layout_constraintTop_toTopOf="@+id/txtTituloLibroStand" />
+
+        <TextView
+            android:id="@+id/txtEstadoLibroStand"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="35dp"
+            android:fontFamily="@font/farro"
+            android:text="Estado:"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtISBMStand"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginTop="27dp"
+            android:fontFamily="@font/farro"
+            android:text="ISBM:"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/txtEstadoLibroStand"
+            app:layout_constraintTop_toBottomOf="@+id/txtEstadoLibroStand" />
+
+        <TextView
+            android:id="@+id/txtGeneroLibroStand"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="31dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="59dp"
+            android:fontFamily="@font/farro"
+            android:text="Género:"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPaginasLibroStand"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/txtISBMStand" />
+
+        <TextView
+            android:id="@+id/txtPaginasLibroStand"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:fontFamily="@font/farro"
+            android:text="Número de páginas:"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtPaginasLibroDetail"
+            app:layout_constraintEnd_toEndOf="@+id/txtEditorialLibroStand"
+            app:layout_constraintStart_toEndOf="@+id/txtEditorialLibroStand" />
+
+        <TextView
+            android:id="@+id/txtEditorialLibroStand"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/farro"
+            android:text="Editorial:"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPaginasLibroStand" />
+
+        <TextView
+            android:id="@+id/txtAñoPublicacionStand"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginStart="16dp"
+            android:fontFamily="@font/farro"
+            android:text="Año de publicación:"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtAñoPublicacionLibroDetail"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTituloLibroDetail"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:fontFamily="@font/farro"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtTituloLibroStand"
+            app:layout_constraintEnd_toEndOf="@+id/txtAutorLibroDetail"
+            app:layout_constraintStart_toStartOf="@+id/txtAutorLibroDetail" />
+
+        <TextView
+            android:id="@+id/txtEstadoLibroDetail"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:fontFamily="@font/farro"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtEstadoLibroStand"
+            app:layout_constraintEnd_toEndOf="@+id/txtISBMDetail"
+            app:layout_constraintStart_toStartOf="@+id/txtISBMDetail" />
+
+        <TextView
+            android:id="@+id/txtISBMDetail"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:fontFamily="@font/farro"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtISBMStand"
+            app:layout_constraintEnd_toEndOf="@+id/txtGeneroLibroDetail"
+            app:layout_constraintStart_toStartOf="@+id/txtGeneroLibroDetail" />
+
+        <TextView
+            android:id="@+id/txtGeneroLibroDetail"
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:fontFamily="@font/farro"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtGeneroLibroStand"
+            app:layout_constraintEnd_toEndOf="@+id/txtEditorialLibroDetail"
+            app:layout_constraintStart_toStartOf="@+id/txtEditorialLibroDetail" />
+
+        <TextView
+            android:id="@+id/txtPaginasLibroDetail"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginEnd="36dp"
+            android:layout_marginBottom="70dp"
+            android:fontFamily="@font/farro"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <TextView
+            android:id="@+id/txtEditorialLibroDetail"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="10dp"
+            android:fontFamily="@font/farro"
+            android:text="TextView"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtEditorialLibroStand"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txtEditorialLibroStand"
+            app:layout_constraintTop_toTopOf="@+id/txtEditorialLibroStand" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/textView13"
+        android:layout_width="414dp"
+        android:layout_height="98dp"
+        android:background="@drawable/cuadro_inferior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
