@@ -7,4 +7,216 @@
     android:layout_height="match_parent"
     tools:context=".Registro">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        android:layout_width="411dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="-39dp"
+        android:background="@drawable/rounded_card"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/imgAtrasregistrarse"
+            android:layout_width="65dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="53dp"
+            android:layout_marginBottom="34dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.086"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="1.0"
+            app:srcCompat="@drawable/ic_back_white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="411dp"
+        android:layout_height="696dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/rounded_card_white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.517"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0">
+
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="107dp"
+            android:layout_marginEnd="108dp"
+            android:layout_marginBottom="21dp"
+            android:text="Crear cuenta"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtNombreRegistro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/txtNombreRegistro"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="31dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Nombres"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+        <EditText
+            android:id="@+id/txtApellidoRegistro"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="31dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Apellidos"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtNombreRegistro" />
+
+        <EditText
+            android:id="@+id/txtCorreoRegistro"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="31dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Correo electronico"
+            android:inputType="text"
+            android:paddingLeft="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtApellidoRegistro" />
+
+        <EditText
+            android:id="@+id/txtPasswordRegistro"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="31dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Contraseña"
+            android:inputType="textPassword"
+            android:paddingLeft="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtCorreoRegistro" />
+
+        <EditText
+            android:id="@+id/txtConfirmarPassword"
+            android:layout_width="350dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="31dp"
+            android:background="@drawable/rounded_edittext"
+            android:ems="10"
+            android:hint="Confirmar Contraseña"
+            android:inputType="textPassword"
+            android:paddingLeft="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPasswordRegistro" />
+
+        <Button
+            android:id="@+id/btnCrearCuenta"
+            android:layout_width="307dp"
+            android:layout_height="55dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="52dp"
+            android:background="@drawable/login_button"
+            android:text="Crear cuenta"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtConfirmarPassword" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="122dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="122dp"
+            android:text="¿Ya tienes cuenta?"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCrearCuenta" />
+
+        <Button
+            android:id="@+id/btnRegresarLogin"
+            android:layout_width="204dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="103dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="36dp"
+            android:background="@drawable/login_button"
+            android:text="Iniciar sesión"
+            android:textColor="#FFFFFF"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView19"
+            app:layout_constraintVertical_bias="0.636" />
+
+        <ImageView
+            android:id="@+id/imgVerPassword"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtPasswordRegistro"
+            app:layout_constraintEnd_toEndOf="@+id/txtPasswordRegistro"
+            app:layout_constraintTop_toTopOf="@+id/txtPasswordRegistro"
+            app:layout_constraintVertical_bias="0.5"
+            app:srcCompat="@drawable/ic_ojo" />
+
+        <ImageView
+            android:id="@+id/imgVerConfirmacionPassword"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="20dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtConfirmarPassword"
+            app:layout_constraintEnd_toEndOf="@+id/txtConfirmarPassword"
+            app:layout_constraintTop_toTopOf="@+id/txtConfirmarPassword"
+            app:layout_constraintVertical_bias="0.5"
+            app:srcCompat="@drawable/ic_ojo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
