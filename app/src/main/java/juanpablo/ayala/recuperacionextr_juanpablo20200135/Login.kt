@@ -45,6 +45,8 @@ class Login : AppCompatActivity() {
                 try {
                     //1-Creo un objeto de la clase conexion
                     val objConexion = ClaseConexion().cadenaConexion()
+                    //Encripto la contraseña usando la función de arriba
+                    val contraseñaEncriptada = hashSHA256(txtPasswordLogin.text.toString())
                     //2- Creo una variable que contenga un PrepareStatement
                     //MUCHA ATENCION! hace un select where el correo y la contraseña sean iguales a los que el usuario escribe
                     //Si el select encuentra un resultado es por que el usuario y contraseña si están
