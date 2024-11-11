@@ -17,3 +17,5 @@ apellidoUsuario VARCHAR2(100) NOT NULL,
 correoElectronico VARCHAR2(100) NOT NULL,
 clave VARCHAR2(100) NOT NULL
 );
+
+select * from tbUsuarios;

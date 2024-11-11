@@ -3,6 +3,7 @@ package juanpablo.ayala.recuperacionextr_juanpablo20200135
 import android.content.Intent
 import android.os.Bundle
 import android.text.InputType
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -17,6 +18,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.security.MessageDigest
+import java.sql.PreparedStatement
 import java.util.UUID
 
 class Registro : AppCompatActivity() {
@@ -40,6 +43,11 @@ class Registro : AppCompatActivity() {
         val imgVerConfirmacionPassword = findViewById<ImageView>(R.id.imgVerConfirmacionPassword)
         val btnCrearCuenta = findViewById<Button>(R.id.btnCrearCuenta)
         val btnRegresarLogin = findViewById<Button>(R.id.btnRegresarLogin)
+
+        fun hashSHA256(contraseñaEscrita: String): String {
+            val bytes = MessageDigest.getInstance("SHA-256").digest(contraseñaEscrita.toByteArray())
+            return bytes.joinToString("") { "%02x".format(it) }
+        }
         //2- Programo los botones para crear cuenta, ir a inicio de sesión y mostrar y ocultar contraseña
         btnCrearCuenta.setOnClickListener{
             // Guardo en variables los valores que escribió el usuario
@@ -81,7 +89,7 @@ class Registro : AppCompatActivity() {
                 errores = true
             }
             //TODO: Segundo verificamos que el correo tenga formato de correo electronico/////////////
-            if (!correo.matches(Regex("[a-zA-Z0-9._-]+@[a-z]+[.][a-z]+"))) {
+            if (!correo.contains("@") || !Patterns.EMAIL_ADDRESS.matcher(correo).matches()) {
                 txtCorreoRegistro.error = "El correo no tiene un formato válido"
                 errores = true
             } else {
@@ -108,13 +116,15 @@ class Registro : AppCompatActivity() {
                 GlobalScope.launch(Dispatchers.IO) {
                     //Creo un objeto de la clase conexion
                     val objConexion = ClaseConexion().cadenaConexion()
+                    //Encripto la contraseña usando la función de arriba
+                    val contraseñaEncriptada = hashSHA256(txtPasswordRegistro.text.toString())
                     //Creo una variable que contenga un PrepareStatement
                     val crearUsuario = objConexion?.prepareStatement("INSERT INTO tbUsuarios(UUID_usuario, nombreUsuario, apellidoUsuario, correoElectronico, clave) VALUES (?, ?, ?, ?, ?)")!!
                     crearUsuario.setString(1, UUID.randomUUID().toString())
                     crearUsuario.setString(2, txtNombreRegistro.text.toString())
                     crearUsuario.setString(3, txtApellidoRegistro.text.toString())
                     crearUsuario.setString(4, txtCorreoRegistro.text.toString())
-                    crearUsuario.setString(5, txtPasswordRegistro.text.toString())
+                    crearUsuario.setString(5, contraseñaEncriptada)
                     crearUsuario.executeUpdate()
                     withContext(Dispatchers.Main) {
                         //Abro otra corrutina o "Hilo" para mostrar un mensaje y limpiar los campos
@@ -128,32 +138,32 @@ class Registro : AppCompatActivity() {
                     }
                 }
             }
-            //Programo los botones para mostrar u ocultar la contraseña
-            imgVerPassword.setOnClickListener {
-                if (txtPasswordRegistro.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
-                    txtPasswordRegistro.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                } else {
-                    txtPasswordRegistro.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                }
-            }
-            imgVerConfirmacionPassword.setOnClickListener {
-                if (txtConfirmarPassword.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
-                    txtConfirmarPassword.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
-                } else {
-                    txtConfirmarPassword.inputType =
-                        InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
-                }
+        }
+        //Programo los botones para mostrar u ocultar la contraseña
+        imgVerPassword.setOnClickListener {
+            if (txtPasswordRegistro.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                txtPasswordRegistro.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                txtPasswordRegistro.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
             }
         }
-        //Al darle clic a la flechita de arriba - Regresar al Login
+        imgVerConfirmacionPassword.setOnClickListener {
+            if (txtConfirmarPassword.inputType == InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD) {
+                txtConfirmarPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD
+            } else {
+                txtConfirmarPassword.inputType =
+                    InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_VARIATION_PASSWORD
+            }
+        }
+        //Al darle clic a la flechita de arriba de: Regresar al Login
         imgAtrasregistrarse.setOnClickListener {
             val pantallaLogin = Intent(this, Login::class.java)
             startActivity(pantallaLogin)
         }
-        //Al darle clic a al boton que ya tengo una cuenta - Regresar al Login
+        //Al darle clic a al boton que ya tengo una cuenta: Regresar al Login
         btnRegresarLogin.setOnClickListener {
             val pantallaLogin = Intent(this, Login::class.java)
             startActivity(pantallaLogin)
