@@ -42,7 +42,7 @@ class Libros : Fragment() {
                 val autorLibro = resultSet.getString("autorLibro")
                 val añoPublicacion = resultSet.getInt("añoPublicacion")
                 val estadoLibro = resultSet.getString("estadoLibro")
-                val ISBM = resultSet.getString("ISBM")
+                val ISBM = resultSet.getInt("ISBM")
                 val generoLibro = resultSet.getString("generoLibro")
                 val paginasLibro = resultSet.getInt("paginasLibro")
                 val editorialLibro = resultSet.getString("editorialLibro")

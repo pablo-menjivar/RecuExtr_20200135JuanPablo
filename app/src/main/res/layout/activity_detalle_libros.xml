@@ -94,7 +94,7 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
-            android:id="@+id/txtAñoPublicacionLibroDetail"
+            android:id="@+id/txtAñoPublicacionDetail"
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:layout_marginTop="116dp"
@@ -264,7 +264,7 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="24sp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/txtAñoPublicacionLibroDetail"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txtAñoPublicacionDetail"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView

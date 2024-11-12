@@ -93,7 +93,7 @@ class Registro : AppCompatActivity() {
                 txtConfirmarPassword.error = "Debe confirmar su contraseña"
                 errores = true
             }
-            // TODO: Tercero verificamos que la edad sea real y que solo contenga numeros/////////////
+            // TODO: Segundo verificamos que la edad sea real y que solo contenga numeros/////////////
             if (edad !in 0..110) {
                 txtEdadRegistro.error = "La edad debe contener solo números"
                 txtEdadRegistro.error = "Ingrese una edad válida"

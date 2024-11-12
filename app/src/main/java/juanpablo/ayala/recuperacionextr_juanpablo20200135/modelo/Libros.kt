@@ -6,7 +6,7 @@ data class Libros (
     var autorLibro: String,
     var añoPublicacion: Int,
     var estadoLibro: String,
-    var ISBM: String,
+    var ISBM: Int,
     var generoLibro: String,
     var paginasLibro: Int,
     var editorialLibro: String

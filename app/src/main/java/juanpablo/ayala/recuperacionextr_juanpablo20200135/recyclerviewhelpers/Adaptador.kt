@@ -20,7 +20,7 @@ import java.util.UUID
 
 class Adaptador(var Datos: List<Libros>): RecyclerView.Adapter<ViewHolder>() {
     @SuppressLint("NotifyDataSetChanged")
-    fun actualicePantalla(UUID: String, nuevoTitulo: String, nuevoAutor: String, nuevoAño: Int, nuevoEstado: String, nuevoISBM: String, nuevoGenero: String,
+    fun actualicePantalla(UUID: String, nuevoTitulo: String, nuevoAutor: String, nuevoAño: Int, nuevoEstado: String, nuevoISBM: Int, nuevoGenero: String,
                           nuevoNumPaginas: Int, nuevaEditorial: String) {
         val index = Datos.indexOfFirst { it.UUID_Libro == UUID }
         Datos[index].tituloLibro = nuevoTitulo
@@ -34,7 +34,7 @@ class Adaptador(var Datos: List<Libros>): RecyclerView.Adapter<ViewHolder>() {
         notifyDataSetChanged() // Notificar al adaptador sobre los cambios
     }
     //TODO:Creo la funcion para actualizar los libros en la base de datos///////////
-    fun actualizarLibro(tituloLibro: String, autorLibro: String, añoPublicacion: Int, estadoLibro: String, ISBM: String, generoLibro: String,
+    fun actualizarLibro(tituloLibro: String, autorLibro: String, añoPublicacion: Int, estadoLibro: String, ISBM: Int, generoLibro: String,
                         paginasLibro: Int, editorialLibro: String, UUID_Libro: String) {
         //Creo una "coroutina"
         GlobalScope.launch(Dispatchers.IO) {
@@ -49,7 +49,7 @@ class Adaptador(var Datos: List<Libros>): RecyclerView.Adapter<ViewHolder>() {
             updateEnfermero.setString(2, autorLibro)
             updateEnfermero.setInt(3, añoPublicacion)
             updateEnfermero.setString(4, estadoLibro)
-            updateEnfermero.setString(5, ISBM)
+            updateEnfermero.setInt(5, ISBM)
             updateEnfermero.setString(6, generoLibro)
             updateEnfermero.setInt(7, paginasLibro)
             updateEnfermero.setString(8, editorialLibro)
@@ -66,7 +66,7 @@ class Adaptador(var Datos: List<Libros>): RecyclerView.Adapter<ViewHolder>() {
                 //1- Creo un objeto de la clase conexion
                 val objConexion = ClaseConexion().cadenaConexion()
                 val delLibro = objConexion?.prepareStatement("delete from tbLibros where UUID_Libro = ?")!!
-                delLibro.setString(9, UUID_Libro)
+                delLibro.setString(1, UUID_Libro)
                 delLibro.executeUpdate()
 
                 //2-Hago un commit para que me amarre
@@ -96,16 +96,16 @@ class Adaptador(var Datos: List<Libros>): RecyclerView.Adapter<ViewHolder>() {
         holder.txtAutorLibro.text = item.autorLibro
         holder.txtAñoPublicacionLibro.text = item.añoPublicacion.toString()
         holder.txtEstadoLibro.text = item.estadoLibro
-        holder.txtISBMLibro.text = item.ISBM
+        holder.txtISBMLibro.text = item.ISBM.toString()
         holder.txtGeneroLibro.text = item.generoLibro
         holder.txtNumPaginasLibro.text = item.paginasLibro.toString()
         holder.txtEditorialLibro.text = item.editorialLibro
-        holder.btnEditarLibro.setOnClickListener {
+        holder.btnEliminarLibro.setOnClickListener {
             val context = holder.itemView.context
 
             val builder = AlertDialog.Builder(context)
-            builder.setTitle("Editar")
-            builder.setMessage("¿Quieres editar este elemento?")
+            builder.setTitle("Eliminar")
+            builder.setMessage("¿Quiere eliminar este elemento?")
 
             builder.setPositiveButton("Sí") { dialog, which ->
                 eliminarLibro(item.UUID_Libro, position)
@@ -147,7 +147,8 @@ class Adaptador(var Datos: List<Libros>): RecyclerView.Adapter<ViewHolder>() {
             layout.addView(inputEstado)
 
             val inputISBM = EditText(context)
-            inputISBM.hint = item.ISBM
+            inputISBM.hint = item.ISBM.toString()
+            inputISBM.inputType = InputType.TYPE_CLASS_NUMBER
             layout.addView(inputISBM)
 
             val inputGenero = EditText(context)
@@ -168,7 +169,7 @@ class Adaptador(var Datos: List<Libros>): RecyclerView.Adapter<ViewHolder>() {
 
             builder.setPositiveButton("Guardar Cambios") { dialog, which ->
                 actualizarLibro(inputTitulo.text.toString(), inputAutor.text.toString(), inputAño.text.toString().toInt(), inputEstado.text.toString(),
-                    inputISBM.text.toString(), inputGenero.text.toString(), inputPaginas.text.toString().toInt(), inputEditorial.text.toString(), item.UUID_Libro)
+                    inputISBM.text.toString().toInt(), inputGenero.text.toString(), inputPaginas.text.toString().toInt(), inputEditorial.text.toString(), item.UUID_Libro)
             }
             builder.setNegativeButton("Cancelar") { dialog, which ->
                 dialog.dismiss()
