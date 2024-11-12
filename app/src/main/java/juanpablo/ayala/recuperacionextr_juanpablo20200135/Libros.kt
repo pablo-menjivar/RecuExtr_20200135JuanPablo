@@ -5,55 +5,63 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import juanpablo.ayala.recuperacionextr_juanpablo20200135.modelo.ClaseConexion
+import juanpablo.ayala.recuperacionextr_juanpablo20200135.modelo.Libros
+import juanpablo.ayala.recuperacionextr_juanpablo20200135.recyclerviewhelpers.Adaptador
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Libros.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Libros : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
         }
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_libros, container, false)
-    }
+        val root = inflater.inflate(R.layout.fragment_libros, container, false)
+        //1-Mando a llamar el RecyclerView de la vista
+        val rcvLibros = root.findViewById<RecyclerView>(R.id.rcvLibros)
+        //Asigno un linearlayout al RecyclerView
+        rcvLibros.layoutManager = LinearLayoutManager(requireContext())
+        //TODO:Creo una funcion para obtener los libros de la base de datos
+        fun obtenerLibros(): List<Libros> {
+            val objConexion = ClaseConexion().cadenaConexion()
+            val statement = objConexion?.createStatement()
+            val resultSet = statement?.executeQuery("select * from tbLibros")!!
+            val libros = mutableListOf<Libros>()
+            while (resultSet.next()) {
+                val UUID_Libro = resultSet.getString("UUID_Libro")
+                val tituloLibro = resultSet.getString("tituloLibro")
+                val autorLibro = resultSet.getString("autorLibro")
+                val añoPublicacion = resultSet.getInt("añoPublicacion")
+                val estadoLibro = resultSet.getString("estadoLibro")
+                val ISBM = resultSet.getString("ISBM")
+                val generoLibro = resultSet.getString("generoLibro")
+                val paginasLibro = resultSet.getInt("paginasLibro")
+                val editorialLibro = resultSet.getString("editorialLibro")
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Libros.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Libros().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+                val libro = Libros(UUID_Libro, tituloLibro, autorLibro, añoPublicacion, estadoLibro, ISBM, generoLibro, paginasLibro, editorialLibro)
+
+                libros.add(libro)
             }
+            return libros
+        }
+        //Asigno un adaptador al RecyclerView
+        //El adaptador se encarga de actualizar los datos en la lista
+        CoroutineScope(Dispatchers.IO).launch {
+            val librosDB = obtenerLibros()
+            withContext(Dispatchers.Main) {
+                val adapter = Adaptador(librosDB)
+                rcvLibros.adapter = adapter
+            }
+        }
+        return root
     }
 }
