@@ -5,7 +5,10 @@
         android:id="@+id/Inicio"
         android:icon="@drawable/ic_home_black_24dp"
         android:title="Inicio" />
-
+    <item
+        android:id="@+id/Libros"
+        android:icon="@drawable/ic_libros"
+        android:title="Ver Libros" />
     <item
         android:id="@+id/addLibros"
         android:icon="@drawable/ic_add"

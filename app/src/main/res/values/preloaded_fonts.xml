@@ -2,6 +2,9 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/adlam_display</item>
+        <item>@font/ar_one_sans</item>
+        <item>@font/coiny</item>
         <item>@font/farro</item>
+        <item>@font/palanquin_dark_medium</item>
     </array>
 </resources>

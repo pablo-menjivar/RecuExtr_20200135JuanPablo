@@ -14,9 +14,12 @@ CREATE TABLE tbUsuarios (
 UUID_Usuario VARCHAR2(100) PRIMARY KEY,
 nombreUsuario VARCHAR2(100) NOT NULL,
 apellidoUsuario VARCHAR2(100) NOT NULL,
+edadUsuario INT NOT NULL,
 correoElectronico VARCHAR2(100) NOT NULL,
 clave VARCHAR2(100) NOT NULL
 );
 
 select * from tbUsuarios;
+drop table tbUsuarios;
+select * from tbLibros;
 SELECT * FROM tbUsuarios WHERE nombreUsuario = ? AND apellidoUsuario = ? AND correoElectronico = ? AND clave = ?
