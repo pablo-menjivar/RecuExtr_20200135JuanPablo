@@ -20,7 +20,6 @@ clave VARCHAR2(100) NOT NULL
 );
 
 select * from tbUsuarios;
-SELECT * FROM tbUsuarios WHERE nombreUsuario = ? AND apellidoUsuario = ? AND correoElectronico = ? AND clave = ?;
-
+select * from tbLibros;
 
 

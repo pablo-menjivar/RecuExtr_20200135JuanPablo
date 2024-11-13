@@ -18,6 +18,7 @@ class DetalleLibros : AppCompatActivity() {
             insets
         }
         //Recibo los valores que me paso desde el Adaptador
+        val uuidLibro = intent.getStringExtra("UUID_Libro")
         val tituloLibro = intent.getStringExtra("tituloLibro")
         val autorLibro = intent.getStringExtra("autorLibro")
         val añoPublicacion = intent.getIntExtra("añoPublicacion", 0)
@@ -27,6 +28,7 @@ class DetalleLibros : AppCompatActivity() {
         val paginasLibro = intent.getIntExtra("paginasLibro", 0)
         val editorialLibro = intent.getStringExtra("editorialLibro")
         //Mando a llamar todos los elementos de la pantalla
+        val txtUUIDLibro = findViewById<TextView>(R.id.txtUUIDLibroDetail)
         val txtTituloLibro = findViewById<TextView>(R.id.txtTituloLibroDetail)
         val txtAutorLibro = findViewById<TextView>(R.id.txtAutorLibroDetail)
         val txtAñoPublicacion = findViewById<TextView>(R.id.txtAñoPublicacionDetail)
@@ -36,6 +38,7 @@ class DetalleLibros : AppCompatActivity() {
         val txtPaginasLibro = findViewById<TextView>(R.id.txtPaginasLibroDetail)
         val txtEditorialLibro = findViewById<TextView>(R.id.txtEditorialLibroDetail)
         //Asigno los datos recibidos a mis TextView
+        txtUUIDLibro.text = uuidLibro
         txtTituloLibro.text = tituloLibro
         txtAutorLibro.text = autorLibro
         txtAñoPublicacion.text = añoPublicacion.toString()
