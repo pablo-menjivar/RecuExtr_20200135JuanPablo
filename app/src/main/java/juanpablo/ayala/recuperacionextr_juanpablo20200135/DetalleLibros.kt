@@ -1,6 +1,8 @@
 package juanpablo.ayala.recuperacionextr_juanpablo20200135
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -28,6 +30,7 @@ class DetalleLibros : AppCompatActivity() {
         val paginasLibro = intent.getIntExtra("paginasLibro", 0)
         val editorialLibro = intent.getStringExtra("editorialLibro")
         //Mando a llamar todos los elementos de la pantalla
+        val btnBack = findViewById<ImageView>(R.id.imgBack)
         val txtUUIDLibro = findViewById<TextView>(R.id.txtUUIDLibroDetail)
         val txtTituloLibro = findViewById<TextView>(R.id.txtTituloLibroDetail)
         val txtAutorLibro = findViewById<TextView>(R.id.txtAutorLibroDetail)
@@ -47,5 +50,9 @@ class DetalleLibros : AppCompatActivity() {
         txtGeneroLibro.text = generoLibro
         txtPaginasLibro.text = paginasLibro.toString()
         txtEditorialLibro.text = editorialLibro
+        btnBack.setOnClickListener {
+            val pantallaLibro = Intent(this, MainActivity::class.java)
+            startActivity(pantallaLibro)
+        }
     }
 }
